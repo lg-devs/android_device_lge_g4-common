@@ -33,6 +33,11 @@ import com.android.internal.telephony.uicc.IccCardStatus;
  * {@hide}
  */
 public class LgeLteRIL extends RIL implements CommandsInterface {
+    public LgeLteRIL(Context context, int preferredNetworkType,
+            int cdmaSubscription, Integer instanceId) {
+        this(context, preferredNetworkType, cdmaSubscription);
+    }
+
     public LgeLteRIL(Context context, int networkMode, int cdmaSubscription) {
         super(context, networkMode, cdmaSubscription);
     }
