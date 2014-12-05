@@ -108,4 +108,38 @@ public class LgeLteRIL extends RIL implements CommandsInterface {
             mPendingGetSimStatus = null;
         }
     }
+
+    @Override
+    protected void
+    processUnsolicited (Parcel p) {
+        Object ret;
+        int dataPosition = p.dataPosition(); // save off position within the Parcel
+        int response = p.readInt();
+
+        switch(response) {
+            case RIL_UNSOL_RIL_CONNECTED: ret = responseInts(p); break;
+            default:
+                // Rewind the Parcel
+                p.setDataPosition(dataPosition);
+                // Forward responses that we are not overriding to the super class
+                super.processUnsolicited(p);
+                return;
+        }
+        switch(response) {
+            case RIL_UNSOL_RIL_CONNECTED: {
+                if (RILJ_LOGD) unsljLogRet(response, ret);
+
+                boolean skipRadioPowerOff = needsOldRilFeature("skipradiooff");
+
+                // Initial conditions
+                if (!skipRadioPowerOff) {
+                    setRadioPower(false, null);
+                }
+                setPreferredNetworkType(mPreferredNetworkType, null);
+                setCdmaSubscriptionSource(mCdmaSubscription, null);
+                notifyRegistrantsRilConnectionChanged(((int[])ret)[0]);
+                break;
+            }
+        }
+    }
 }
