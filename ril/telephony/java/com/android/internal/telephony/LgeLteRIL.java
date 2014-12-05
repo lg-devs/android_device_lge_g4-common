@@ -21,6 +21,7 @@ import static com.android.internal.telephony.RILConstants.*;
 import android.content.Context;
 import android.os.Message;
 import android.os.Parcel;
+import android.os.SystemProperties;
 import android.util.Log;
 
 import com.android.internal.telephony.RILConstants;
@@ -129,12 +130,12 @@ public class LgeLteRIL extends RIL implements CommandsInterface {
             case RIL_UNSOL_RIL_CONNECTED: {
                 if (RILJ_LOGD) unsljLogRet(response, ret);
 
-                boolean skipRadioPowerOff = needsOldRilFeature("skipradiooff");
-
                 // Initial conditions
-                if (!skipRadioPowerOff) {
+                if (SystemProperties.get("ril.socket.reset").equals("1")) {
                     setRadioPower(false, null);
                 }
+                // Trigger socket reset if RIL connect is called again
+                SystemProperties.set("ril.socket.reset", "1");
                 setPreferredNetworkType(mPreferredNetworkType, null);
                 setCdmaSubscriptionSource(mCdmaSubscription, null);
                 notifyRegistrantsRilConnectionChanged(((int[])ret)[0]);
