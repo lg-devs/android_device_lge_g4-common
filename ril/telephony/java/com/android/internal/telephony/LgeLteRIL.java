@@ -19,6 +19,7 @@ package com.android.internal.telephony;
 import static com.android.internal.telephony.RILConstants.*;
 
 import android.content.Context;
+import android.os.AsyncResult;
 import android.os.Message;
 import android.os.Parcel;
 import android.os.SystemProperties;
@@ -35,6 +36,7 @@ import com.android.internal.telephony.uicc.IccCardStatus;
  * {@hide}
  */
 public class LgeLteRIL extends RIL implements CommandsInterface {
+    static final String LOG_TAG = "LgeLteRIL";
     private Message mPendingGetSimStatus;
 
     public LgeLteRIL(Context context, int preferredNetworkType,
@@ -138,9 +140,23 @@ public class LgeLteRIL extends RIL implements CommandsInterface {
                 SystemProperties.set("ril.socket.reset", "1");
                 setPreferredNetworkType(mPreferredNetworkType, null);
                 setCdmaSubscriptionSource(mCdmaSubscription, null);
+                setCellInfoListRate(Integer.MAX_VALUE, null);
                 notifyRegistrantsRilConnectionChanged(((int[])ret)[0]);
                 break;
             }
+        }
+    }
+
+    // This call causes ril to crash the socket, stopping further communication
+    @Override
+    public void
+    getHardwareConfig (Message result) {
+        riljLog("Ignoring call to 'getHardwareConfig'");
+        if (result != null) {
+            CommandException ex = new CommandException(
+                CommandException.Error.REQUEST_NOT_SUPPORTED);
+            AsyncResult.forMessage(result, null, ex);
+            result.sendToTarget();
         }
     }
 }
