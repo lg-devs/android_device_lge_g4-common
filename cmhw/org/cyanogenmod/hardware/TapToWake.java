@@ -16,7 +16,6 @@
 
 package org.cyanogenmod.hardware;
 
-import java.io.File;
 import org.cyanogenmod.hardware.util.FileUtils;
 
 public class TapToWake {
@@ -24,12 +23,11 @@ public class TapToWake {
     private static String CONTROL_PATH = "/sys/devices/virtual/input/lge_touch/lpwg_notify";
 
     public static boolean isSupported() {
-        File f = new File(CONTROL_PATH);
-        return f.exists();
+        return true;
     }
 
     public static boolean isEnabled()  {
-        return "1".equals(FileUtils.readOneLine(CONTROL_PATH));
+        return Integer.parseInt(FileUtils.readOneLine(CONTROL_PATH)) == 1;
     }
 
     public static boolean setEnabled(boolean state)  {
