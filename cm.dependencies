@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "android_kernel_lge_g4",
+    "target_path": "kernel/lge/g4"
+  },
+  {
+    "repository": "android_device_qcom_common",
+    "target_path": "device/qcom/common"
+  }
+]
