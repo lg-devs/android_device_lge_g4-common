@@ -69,7 +69,34 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui
 # Init
 PRODUCT_PACKAGES += \
     fstab.g4 \
-    ueventd.g4.rc
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.bt.sh \
+    hsic.control.bt.sh \
+    init.ath3k.bt.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.coex.sh \
+    init.qcom.fm.sh \
+    init.qcom.sdio.sh \
+    init.qcom.wifi.sh \
+    init.crda.sh \
+    init.g4.rc \
+    init.qcom.factory.sh \
+    init.qcom.sh \
+    init.qcom.class_core.sh \
+    init.class_main.sh \
+    init.g4.usb.rc \
+    init.qcom.usb.sh \
+    ueventd.g4.rc \
+    init.qcom.syspart_fixup.sh \
+    init.qcom.audio.sh \
+    qca6234-service.sh \
+    hcidump.sh \
+    init.qcom.ssr.sh \
+    init.mdm.sh \
+    init.qcom.debug.sh \
+    init.qcom.zram.sh \
+    init.qcom.uicc.sh
 
 # Audio
 PRODUCT_PACKAGES += \
