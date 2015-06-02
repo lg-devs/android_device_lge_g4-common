@@ -260,6 +260,7 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
+
     # Flashlight
     chown system system /sys/class/leds/flashlight/brightness
     chown system system /sys/class/leds/flashlight_front/brightness
@@ -330,6 +331,7 @@ on boot
 	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
 	chown system radio /sys/devices/virtual/input/lge_touch/lpwg_notify
 	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_notify
+	write /sys/devices/virtual/input/lge_touch/lpwg_notify "1 1 0 0"
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_test_info
 	chmod 644 /sys/devices/virtual/input/lge_touch/lpwg_test_info
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_test_ctrl
@@ -342,7 +344,6 @@ on boot
     lge_chcon_recursive /data/property u:object_r:property_data_file:s0
     lge_chcon_recursive /data/security u:object_r:security_file:s0
     start chcon_keystore
-
 
     chown media media /sys/devices/soc.0/qcom,msm-pcm-routing.39/cfg_string_rx
     chown media media /sys/devices/soc.0/qcom,msm-pcm-routing.39/cfg_string_tx
