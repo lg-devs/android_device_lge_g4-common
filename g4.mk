@@ -69,6 +69,7 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui
 # Init
 PRODUCT_PACKAGES += \
     fstab.g4 \
+    init.g4.sensor.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.bt.sh \
