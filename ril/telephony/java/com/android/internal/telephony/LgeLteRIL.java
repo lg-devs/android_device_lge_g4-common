@@ -44,6 +44,7 @@ public class LgeLteRIL extends RIL implements CommandsInterface {
     public LgeLteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         this(context, preferredNetworkType, cdmaSubscription);
+        mQANElements = 5;
     }
 
     public LgeLteRIL(Context context, int networkMode, int cdmaSubscription) {
