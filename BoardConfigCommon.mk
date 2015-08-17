@@ -90,7 +90,7 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUEDROID_VENDOR_CONF := device/lge/g4-common/bluetooth/vnd_4.txt
+BOARD_BLUEDROID_VENDOR_CONF := device/lge/g4-common/bluetooth/vnd_g4.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/g4-common/bluetooth
 
 # Camera
