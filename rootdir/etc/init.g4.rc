@@ -31,14 +31,8 @@ import init.target.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     symlink /sys/module/lge_smpl_count/parameters/smpl_boot /smpl_boot
+     mkdir /firmware 0771 system system
 
-on early-fs
-    mount_all ./fstab.g4
-    restorecon_recursive /sns
-    restorecon_recursive /mpt
-    setprop ro.crypto.fuse_sdcard true
-    
-    
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -110,6 +104,14 @@ on init
     mkdir /mnt/pstore 660 system system
     mount pstore /mnt/pstore /mnt/pstore
 
+on fs
+    mount_all ./fstab.g4
+    restorecon_recursive /sns
+    restorecon_recursive /persist
+    restorecon_recursive /persist-lg
+    setprop ro.crypto.fuse_sdcard true
+
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -121,6 +123,13 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
+   # bring CPUs online
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/module/msm_thermal/core_control/enabled 1
+
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
@@ -152,7 +161,7 @@ on boot
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwake
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/preproto
-    chmod 0660 /sys/class/rfkill/rfkill0/state
+
     chmod 0660 /proc/bluetooth/sleep/btwake
     chmod 0660 /proc/bluetooth/sleep/proto
     chmod 0660 /proc/bluetooth/sleep/preproto
@@ -163,6 +172,10 @@ on boot
     chmod 0660 /dev/ttyHS99
     chmod 0660 /dev/ttyHS0
 # LGE_CHANGE_E, [BT][younghyun.kwon@lge.com], 2013-04-10
+
+# WiFi
+    chown wifi wifi /dev/rfkill
+    chmod 0600 /dev/rfkill
 
     # Feature chip vendor : brcm
     setprop bluetooth.chip.vendor brcm
@@ -198,12 +211,19 @@ on boot
 
     setprop ro.telephony.call_ring.multiple false
 
+
+    # Set SUID bit for usbhub
+    chmod 4755 /system/bin/usbhub
+    chmod 755 /system/bin/usbhub_init
+
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
+    # For bridgemgr daemon to inform the USB driver of the correct transport
+    chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
@@ -529,212 +549,22 @@ service log-kernel /system/bin/sh /system/bin/logger_kernel.sh
     oneshot
     seclabel u:r:logger:s0
 
+on property:persist.service.kernel.enable=0
+    stop log-kernel
+on property:persist.service.kernel.enable=1
+    restart log-kernel
+on property:persist.service.kernel.enable=2
+    restart log-kernel
+on property:persist.service.kernel.enable=3
+    restart log-kernel
+on property:persist.service.kernel.enable=4
+    restart log-kernel
+on property:persist.service.kernel.enable=5
+    restart log-kernel
 on property:persist.service.kernel.enable=6
     restart log-kernel
 
-on property:persist.service.kernel.enable=5
-    restart log-kernel
 
-on property:persist.service.kernel.enable=4
-    restart log-kernel
-
-on property:persist.service.kernel.enable=3
-    restart log-kernel
-
-on property:persist.service.kernel.enable=2
-    restart log-kernel
-
-on property:persist.service.kernel.enable=1
-    restart log-kernel
-
-on property:persist.service.kernel.enable=0
-    stop log-kernel
-
-# power log
-service log-power /system/bin/sh /system/bin/logger_power.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:logger:s0
-
-on property:persist.service.power.enable=6
-    restart log-power
-
-on property:persist.service.power.enable=5
-    restart log-power
-
-on property:persist.service.power.enable=4
-    restart log-power
-
-on property:persist.service.power.enable=3
-    restart log-power
-
-on property:persist.service.power.enable=2
-    restart log-power
-
-on property:persist.service.power.enable=1
-    restart log-power
-
-on property:persist.service.power.enable=0
-    stop log-power
-
-
-# logcat main
-service logcat-main /system/bin/sh /system/bin/logger_main.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:logger:s0
-
-on property:persist.service.main.enable=6
-    restart logcat-main
-
-on property:persist.service.main.enable=5
-    restart logcat-main
-
-on property:persist.service.main.enable=4
-    restart logcat-main
-
-on property:persist.service.main.enable=3
-    restart logcat-main
-
-on property:persist.service.main.enable=2
-    restart logcat-main
-
-on property:persist.service.main.enable=1
-    restart logcat-main
-
-on property:persist.service.main.enable=0
-    stop logcat-main
-
-# logcat system
-service logcat-system /system/bin/sh /system/bin/logger_system.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:logger:s0
-
-on property:persist.service.system.enable=6
-    restart logcat-system
-
-on property:persist.service.system.enable=5
-    restart logcat-system
-
-on property:persist.service.system.enable=4
-    restart logcat-system
-
-on property:persist.service.system.enable=3
-    restart logcat-system
-
-on property:persist.service.system.enable=2
-    restart logcat-system
-
-on property:persist.service.system.enable=1
-    restart logcat-system
-
-on property:persist.service.system.enable=0
-    stop logcat-system
-
-# logcat radio
-service logcat-radio /system/bin/sh /system/bin/logger_radio.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:logger:s0
-
-on property:persist.service.radio.enable=6
-    restart logcat-radio
-
-on property:persist.service.radio.enable=5
-    restart logcat-radio
-
-on property:persist.service.radio.enable=4
-    restart logcat-radio
-
-on property:persist.service.radio.enable=3
-    restart logcat-radio
-
-on property:persist.service.radio.enable=2
-    restart logcat-radio
-
-on property:persist.service.radio.enable=1
-    restart logcat-radio
-
-on property:persist.service.radio.enable=0
-    stop logcat-radio
-
-# logcat events
-service logcat-events /system/bin/sh /system/bin/logger_events.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:logger:s0
-
-on property:persist.service.events.enable=6
-    restart logcat-events
-
-on property:persist.service.events.enable=5
-    restart logcat-events
-
-on property:persist.service.events.enable=4
-    restart logcat-events
-
-on property:persist.service.events.enable=3
-    restart logcat-events
-
-on property:persist.service.events.enable=2
-    restart logcat-events
-
-on property:persist.service.events.enable=1
-    restart logcat-events
-
-on property:persist.service.events.enable=0
-    stop logcat-events
-
-# locat setupwizard
-    service logcat-setwiz /system/bin/sh /system/bin/logger_setupwizard.sh
-    class main
-    disabled
-    oneshot
-
-on property:persist.service.setwiz.enable=1
-    restart logcat-setwiz
-
-on property:persist.service.setwiz.enable=0
-    stop logcat-setwiz
-
-#tcpdump - packet log
-service log-packet /system/bin/sh /system/bin/logger_packet.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:logger:s0
-
-on property:persist.service.packet.enable=1
-    start log-packet
-
-on property:persist.service.packet.enable=0
-    stop log-packet
-
-on property:vold.decrypt=trigger_restart_framework
-    restart log-kernel
-    restart log-power
-    restart logcat-main
-    restart logcat-system
-    restart logcat-radio
-    restart logcat-events
-    restart log-packet
-	restart logcat-memory
-
-on property:vold.encrypt_progress=0
-    restart log-kernel
-    restart log-power
-    restart logcat-main
-    restart logcat-system
-    restart logcat-radio
-    restart logcat-events
-	restart log-packet
-	restart logcat-memory
 
 # memory log
 service logcat-memory /system/bin/sh /system/bin/logger_memory.sh
@@ -742,27 +572,6 @@ service logcat-memory /system/bin/sh /system/bin/logger_memory.sh
     disabled
     oneshot
     seclabel u:r:logger:s0
-
-on property:persist.service.memory.enable=6
-    restart logcat-memory
-
-on property:persist.service.memory.enable=5
-    restart logcat-memory
-
-on property:persist.service.memory.enable=4
-    restart logcat-memory
-
-on property:persist.service.memory.enable=3
-    restart logcat-memory
-
-on property:persist.service.memory.enable=2
-    restart logcat-memory
-
-on property:persist.service.memory.enable=1
-    restart logcat-memory
-
-on property:persist.service.memory.enable=0
-    stop logcat-memory
 
 ### END LGE LOGGING ###
 
@@ -775,9 +584,8 @@ on chargerlogo
    trigger chargerlogo_exec
 
 on chargerlogo_exec
-   setprop persist.service.kernel.enable 4
-   start log-kernel
    stop bootanim
+   mount_all ./fstab.g4
    write /sys/class/android_usb/android0/enable 0
    write /sys/class/android_usb/android0/idVendor 1004
    write /sys/class/android_usb/android0/idProduct 6300
@@ -843,9 +651,6 @@ service qcom-debug /system/bin/sh /system/etc/init.qcom.debug.sh
 on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
     write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
     write /sys/bus/coresight/devices/coresight-etm0/enable 0
     write /sys/bus/coresight/devices/coresight-etm1/enable 0
     write /sys/bus/coresight/devices/coresight-etm2/enable 0
@@ -1108,7 +913,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -m/data/misc/wifi/p2p_supplicant.conf \
-    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1p2p_device=1 \
+    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
