@@ -19,10 +19,5 @@
 /dev/block/bootdevice/by-name/drm          /persist-lg     ext4    nosuid,nodev,barrier=1,noatime,noauto_da_alloc,errors=continue      wait
 /dev/block/bootdevice/by-name/mpt          /mpt            ext4    nosuid,nodev,barrier=1,noatime,noauto_da_alloc,errors=continue      wait
 
-/devices/soc.0/f98a4900.sdhci/mmc_host     /storage/external_SD    vfat    nosuid,nodev            wait,voldmanaged=external_SD:auto
-/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd.0.auto/usb1/1-1       /storage/USBstorage1    vfat    nosuid,nodev         wait,voldmanaged=USBstorage1:auto
-/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd.0.auto/usb1/1-1       /storage/USBstorage2    vfat    nosuid,nodev         wait,voldmanaged=USBstorage2:auto
-/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd.0.auto/usb1/1-1       /storage/USBstorage3    vfat    nosuid,nodev         wait,voldmanaged=USBstorage3:auto
-/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd.0.auto/usb1/1-1       /storage/USBstorage4    vfat    nosuid,nodev         wait,voldmanaged=USBstorage4:auto
-/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd.0.auto/usb1/1-1       /storage/USBstorage5    vfat    nosuid,nodev         wait,voldmanaged=USBstorage5:auto
-/devices/soc.0/f9200000.ssusb/f9200000.dwc3/xhci-hcd.0.auto/usb1/1-1       /storage/USBstorage6    vfat    nosuid,nodev         wait,voldmanaged=USBstorage6:auto
+/devices/msm_sdcc.2/mmc_host                        auto            vfat    defaults voldmanaged=sdcard1:auto
+/devices/platform/xhci-hcd                          auto            vfat    defaults voldmanaged=usbdisk0:auto
