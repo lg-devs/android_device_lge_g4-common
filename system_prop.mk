@@ -5,24 +5,35 @@
 # MTP and USB-OTG
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp \
-    persist.sys.isUsbOtgEnabled=true
 
 
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    mm.enable.smoothstreaming=true \
-    mm.enable.qcom_parser=3314291 \
-    audio.offload.buffer.size.kb=1024 \
-    av.offload.enable=true \
-    av.streaming.offload.enable=true \
-    use.voice.path.for.pcm.voip=true \
-    audio.offload.multiple.enabled=true \
-    audio.offload.gapless.enabled=true \
-    media.aac_51_output_enabled=true \
-    audio.offload.pcm.16bit.enable=false \
-    audio.offload.pcm.24bit.enable=true
+    audio.offload.24bit.enable=true \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.gapless.enabled=false \
+    audio.offload.multiple.enabled=false \
+    audio.offload.pcm.enable=true \
+    media.aac_51_output_enabled=true
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    av.offload.enable=false \
+    av.streaming.offload.enable=false
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    mm.enable.smoothstreaming=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.audio.fluencetype=fluence
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    use.voice.path.for.pcm.voip=true
 # Display
 #
 # OpenGLES:
@@ -63,9 +74,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.add_power_save=1 \
-    ro.telephony.ril_class=LgeLteRIL
+    persist.radio.apm_sim_not_pwdn=1 \
+    ro.telephony.ril_class=LgeLteRIL \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=false \
@@ -90,3 +101,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.qualcomm.sns.daemon=e \
     debug.qualcomm.sns.hal=e \
     debug.qualcomm.sns.libsensor1=e
+
+# USB
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.isUsbOtgEnabled=true
