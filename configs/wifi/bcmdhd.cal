@@ -1,0 +1,171 @@
+#LGE P1 TMUS 4339 RF_Module 15.03.02
+#2G/5G power default cal
+#RSSI Default Cal
+#Target power / 141001
+
+
+sromrev=11
+boardrev=0x1106
+boardtype=0x06b6
+
+##Modified by BRCM 
+boardflags=0x10081401
+boardflags2=0x00000000
+boardflags3=0x08003188
+#Option : define BFL3_PTW70_WAR 0x010000 /acphy, support PTW70 equipment 
+#Option : define BFL3_ACPHY_LPMODE_2 0x0100000 / for lpmode_2g choice /
+#boardflags3=0x08111188
+
+
+#boardnum=57410 
+macaddr=00:90:4c:c5:12:38
+ccode=ALL
+regrev=16
+antswitch=0
+pdgain2g=7
+pdgain5g=7
+tworangetssi2g=0
+tworangetssi5g=0
+muxenab=0x10
+#sd_gpout=0
+#sd_oobonly=1
+vendid=0x14e4
+devid=0x43ae
+manfid=0x2d0
+#prodid=0x052e
+nocrc=1
+otpimagesize=502
+xtalfreq=37400
+extpagain2g=2
+pdetrange2g=2
+extpagain5g=2
+pdetrange5g=2
+
+##Modified by BRCM : 20130824 
+rxgains2gelnagaina0=2
+
+rxgains2gtrisoa0=6
+
+rxgains2gtrelnabypa0=1
+rxgains5gelnagaina0=2
+
+rxgains5gtrisoa0=6
+
+rxgains5gtrelnabypa0=1
+rxchain=1
+txchain=1
+aa2g=1
+aa5g=1
+
+## Antenna gain for 2.4G
+agbg0=253
+## Antenna gain for 5G
+aga0=253
+
+tssipos5g=0
+tssipos2g=0
+
+pa2gccka0=-116,7656,-852
+pa2ga0=-161,6285,-723
+
+pa5ga0=-164,5853,-689,-164,5786,-687,-167,5735,-686,-157,5688,-662
+pa5gbw40a0=-171,5731,-670,-163,5819,-681,-159,5769,-666,-141,5735,-631
+pa5gbw80a0=-154,5680,-647,-159,5682,-651,-163,5755,-673,-175,5524,-660
+
+pdoffset40ma0=0
+pdoffset80ma0=0
+pdoffsetcckma0=0
+
+# Target Power for 2G was changed by LG D4 Division for LGIT MD(15. 3/2)
+# 11b: 19dBm
+# 11g: 14dBm(54M,48M)/15dBm(36M,24M,18M,12M)/16dBm(6M,9M)
+# 11n: 13dBm(MCS7)/14dBmMCS(6~3)/16dBm(MCS2~0)
+
+maxp2ga0=85
+
+cckbw202gpo=0x0000
+cckbw20ul2gpo=0x0000
+
+ofdmlrbw202gpo=0x0084
+dot11agofdmhrbw202gpo=0xaa88
+
+mcsbw202gpo=0xeccaaaa6
+mcsbw402gpo=0xccaaaaa6
+
+# Target Power for 5G was changed by LG D4 Division for LGIT MD(15.3/2)
+# 11a : 14dBm(54M,48M) 15dBm(36M,24M) 16dBm(18,12,9,6M)
+# 11n : 13dBm (MCS7) 14dBm(MCS6,5) 15(MCS4,3) 16dBm(MCS2~0) 
+# 11nHT40 : 13dBm (MCS7) 14(MCS6~3) 15(MCS2~0) 
+# 11ac VHT20 : 13dBm (MCS8,7) 14dBm(MCS6,5) 15(MCS4,3) 16dBm(MCS2~0) 
+# 11ac VHT40 : 12(MCS9) 13dBm (MCS8,7) 14dBm(MCS6~3) 15(MCS2~0)
+# 11ac VHT80 : 12(MCS9) 13dBm (MCS8~3) 14dBm(MCS2~0)
+
+maxp5ga0=72,74,74,76
+
+#low
+mcsbw205glpo=0x86644220
+mcsbw405glpo=0xA8866664
+mcsbw805glpo=0xCAA88886
+mcsbw1605glpo=0xcca88642
+#mid
+mcsbw205gmpo=0x86644220
+mcsbw405gmpo=0xA8866664
+mcsbw805gmpo=0xCAA88886
+mcsbw1605gmpo=0xcca88642
+#high
+mcsbw205ghpo=0x86644220
+mcsbw405ghpo=0xA8866664
+mcsbw805ghpo=0xCAA88886
+mcsbw1605ghpo=0xcca88642
+
+mcslr5glpo=0x0000
+mcslr5gmpo=0x0000
+mcslr5ghpo=0x0000
+
+sb20in40hrpo=0x0
+sb20in80and160hr5glpo=0x0
+sb40and80hr5glpo=0x0
+sb20in80and160hr5gmpo=0x0
+sb40and80hr5gmpo=0x0
+sb20in80and160hr5ghpo=0x0
+sb40and80hr5ghpo=0x0
+sb20in40lrpo=0x0
+sb20in80and160lr5glpo=0x0
+sb40and80lr5glpo=0x0
+sb20in80and160lr5gmpo=0x0
+sb40and80lr5gmpo=0x0
+sb20in80and160lr5ghpo=0x0
+sb40and80lr5ghpo=0x0
+dot11agduphrpo=0x0
+dot11agduplrpo=0x0
+phycal_tempdelta=25
+cckdigfilttype=2
+tssifloor2g=500
+
+ofdmfiltbesel_2g=0x9
+ofdmfiltbe_2g=6
+
+swctrlmap_5g=0x00080008,0x00140000,0x00100008,0x800301,0x01c
+swctrlmap_2g=0x00000000,0x00030001,0x00010000,0x800301,0x0ff
+swctrlmapext_5g=0x00000000,0x00000000,0x00000000,0x000000,0x000
+swctrlmapext_2g=0x00000001,0x00000000,0x00000000,0x000000,0x001
+
+##2G RSSI compensation 20/40
+rssicorrnorm_c0=-3,-3
+##5G RSSI compenation Low(36-48):20/40/80, Mid(54-64):20/40/80, High(100-140):20/40/80, X1(149-165):20/40/80
+rssicorrnorm5g_c0=-7,-7,-7,-6,-6,-6,-4,-4,-4,-2,-2,-2
+#2G channel compansation : ch12/ch3/ch2/ch1
+rpcal2g=0x4F0E
+#2G channel compansation : ch5/ch4/ch14/ch13
+rpcal5gb0=0xEE04
+#2G channel compansation : ch9/ch8/ch7/ch6
+rpcal5gb1=0x110F
+#2G channel compansation : NA/NA/ch11/ch10
+rpcal5gb2=0x0000
+
+ed_thresh2g=-77
+ed_thresh5g=-77
+muxenab=0x10
+
+# Set btc_params for BT coex issue 
+btc_params80=0 
