@@ -66,6 +66,9 @@ $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk
 
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
+# Add WiFi Firmware
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
+
 # Init
 PRODUCT_PACKAGES += \
     fstab.g4 \
@@ -234,9 +237,8 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    hostapd \
-    hostapd_default.conf \
-    dhcpcd.conf \
     libwpa_client \
+    hostapd \
+    dhcpcd.conf \
     wpa_supplicant \
     wpa_supplicant.conf

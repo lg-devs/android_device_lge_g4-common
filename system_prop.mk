@@ -7,8 +7,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp \
     persist.sys.isUsbOtgEnabled=true
 
-
-
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.smoothstreaming=true \
@@ -33,7 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true \
     ro.opengles.version=196608 \
-    ro.sf.lcd_density=640
+    ro.sf.lcd_density=560
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -73,7 +71,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Recovery
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cwm.forbid_format=/boot,/firmware,/persist
+    ro.cwm.forbid_format=/boot,/firmware,/mpt,/persist,/persist-lg,/sns
 
 # Sensor debugging
 # Valid settings (and presumably what they mean):
