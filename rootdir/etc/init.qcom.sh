@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2009-2015, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2014, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -121,14 +121,15 @@ do
   echo 0 > $file/accept_ra_defrtr
 done
 echo 1 > /proc/sys/net/ipv6/conf/default/accept_ra_defrtr
-
+# For Wifi Ipv6 default route setup
+echo 1 > /proc/sys/net/ipv6/conf/wlan0/accept_ra_defrtr
 case "$baseband" in
         "svlte2a")
         start bridgemgrd
         ;;
 esac
 
-start_sensors
+#start_sensors
 
 case "$target" in
     "msm7630_surf" | "msm7630_1x" | "msm7630_fusion")
@@ -227,7 +228,7 @@ case "$target" in
                             esac
                             ;;
                        "MTP")
-                          case "$platform_subtype_id" in
+                          case "$platform_subtype_id"
                                "3")
                                     setprop qemu.hw.mainkeys 0
                                     ;;
@@ -237,7 +238,7 @@ case "$target" in
                   ;;
         esac
         ;;
-    "msm8994" | "msm8992")
+    "msm8994")
         start_msm_irqbalance
         ;;
     "msm8909")

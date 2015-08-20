@@ -14,12 +14,29 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
+# Inherit proprietary blobs
 $(call inherit-product-if-exists, vendor/lge/g4-common/g4-common-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+# System properties
+-include $(LOCAL_PATH)/system_prop.mk
+
+# Screen density
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi 560dpi xxxhdpi
+PRODUCT_AAPT_PREF_CONFIG := 560dpi
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2560
+TARGET_SCREEN_WIDTH := 1440
+
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+
+# Add WiFi Firmware
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -48,59 +65,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
-# System properties
--include $(LOCAL_PATH)/system_prop.mk
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
-# Screen density
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi 560dpi xxxhdpi
-PRODUCT_AAPT_PREF_CONFIG := 560dpi
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2560
-TARGET_SCREEN_WIDTH := 1440
-
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
-
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
-
-# Add WiFi Firmware
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
-
-# Init
+# Init configuration
 PRODUCT_PACKAGES += \
-    fstab.g4 \
-    init.g4.sensor.sh \
-    init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.bt.sh \
-    hsic.control.bt.sh \
-    init.ath3k.bt.sh \
-    init.qcom.efs.sync.sh \
-    init.qcom.coex.sh \
-    init.qcom.fm.sh \
-    init.qcom.sdio.sh \
-    init.qcom.wifi.sh \
-    init.crda.sh \
-    init.g4.rc \
-    init.qcom.factory.sh \
-    init.qcom.sh \
-    init.qcom.class_core.sh \
-    init.class_main.sh \
-    init.g4.usb.rc \
-    init.qcom.usb.sh \
-    ueventd.g4.rc \
-    init.qcom.syspart_fixup.sh \
-    init.qcom.audio.sh \
-    qca6234-service.sh \
-    hcidump.sh \
-    init.qcom.ssr.sh \
-    init.mdm.sh \
-    init.qcom.debug.sh \
-    init.qcom.zram.sh \
-    init.qcom.uicc.sh
+    fstab.qcom \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    ueventd.qcom.rc
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -109,7 +79,8 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8992 \
     audio.r_submix.default \
     audio.usb.default \
-    audio_policy.msm8992
+    audio_policy.msm8992 \
+    tinymix
 
 PRODUCT_PACKAGES += \
     libaudio-resampler \
@@ -180,9 +151,15 @@ PRODUCT_PACKAGES += \
     memtrack.msm8992 \
     liboverlay
 
-# Filesystem
+# Keymaster
 PRODUCT_PACKAGES += \
-    e2fsck
+    keystore.msm8992
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    e2fsck \
+    make_ext4fs \
+    setup_fs
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -214,9 +191,12 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
+    libOmxSwVencMpeg4 \
+    libOmxSwVencHevc \
     libOmxVdec \
     libOmxVdecHevc \
     libOmxVenc \
+    libOmxVidcCommon \
     libstagefrighthw \
     qcmediaplayer
 
@@ -226,10 +206,6 @@ PRODUCT_BOOT_JARS += \
 # Power
 PRODUCT_PACKAGES += \
     power.msm8992
-
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
 
 # USB
 PRODUCT_PACKAGES += \
@@ -242,3 +218,8 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# IPv6
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes

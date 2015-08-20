@@ -13,8 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from the proprietary version
--include vendor/lge/g4-common/BoardConfigVendor.mk
+BOARD_VENDOR := lge
 
 LOCAL_PATH := device/lge/g4-common
 
@@ -48,13 +47,13 @@ TARGET_USES_C2D_COMPOSITION := true
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := device/lge/g4-common/mkbootimg.mk
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.hardware=g4 androidboot.selinux=permissive
-BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x00078000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_OFFSET := 0x02000000
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0000000 --ramdisk_offset 0x02200000 --tags_offset 0x00000100
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01f88000 --tags_offset 0x01d88000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/lge/msm8992
@@ -70,7 +69,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/lge/g4-common/rootdir/etc/fstab.g4
+TARGET_RECOVERY_FSTAB := device/lge/g4-common/rootdir/etc/fstab.qcom
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -172,3 +171,6 @@ TARGET_RELEASE_CPPFLAGS += -DNEEDS_LGE_RIL_SYMBOLS
 # NFC
 BOARD_NFC_CHIPSET := pn547
 BOARD_NFC_DEVICE := pn547
+
+# inherit from the proprietary version
+-include vendor/lge/g4-common/BoardConfigVendor.mk
