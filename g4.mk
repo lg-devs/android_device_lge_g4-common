@@ -192,7 +192,6 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
     libOmxSwVencMpeg4 \
-    libOmxSwVencHevc \
     libOmxVdec \
     libOmxVdecHevc \
     libOmxVenc \
