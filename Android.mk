@@ -71,7 +71,7 @@ $(SECUREKS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 ALL_DEFAULT_INSTALLED_MODULES += $(SECUREKS_SYMLINKS)
 
 SECUREMM_IMAGES := \
-    secureks.b00 secureks.b01 secureks.b02 secureks.b03 secureks.mdt
+    securemm.b00 securemm.b01 securemm.b02 securemm.b03 securemm.mdt
 
 SECUREMM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(SECUREMM_IMAGES))
 $(SECUREMM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
