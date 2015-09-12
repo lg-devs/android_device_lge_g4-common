@@ -72,6 +72,15 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     ueventd.qcom.rc
 
+# Init scripts
+PRODUCT_PACKAGES += \
+    init.qcom.sh \
+    init.qcom.coex.sh \
+    init.qcom.fm.sh \
+    init.class_main.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.uicc.sh
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
