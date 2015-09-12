@@ -17,7 +17,7 @@ BOARD_VENDOR := lge
 
 LOCAL_PATH := device/lge/g4-common
 
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := device/lge/g4-common/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8992

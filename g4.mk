@@ -222,3 +222,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
+
+# Misc
+PRODUCT_PACKAGES += \
+     libxml2
