@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-/**
- * Copyright (c) 2013, The Android Open Source Project
+ * Copyright (c) 2006, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +13,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+*/
 -->
 <resources>
-    <!-- Set the automatic brightness mode on by default -->
-    <bool name="def_screen_brightness_automatic_mode">true</bool>
-
-    <!-- Default screen brightness, from 0 to 255. 82 is 32%. -->
-    <integer name="def_screen_brightness">82</integer>
+    <dimen name="self_expand_velocity">4000dp</dimen>
+    <dimen name="self_collapse_velocity">4000dp</dimen>
+    <dimen name="fling_gesture_max_x_velocity">1500dp</dimen>
+    <dimen name="fling_gesture_max_output_velocity">6000dp</dimen>
 </resources>

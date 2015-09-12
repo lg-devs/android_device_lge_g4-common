@@ -41,15 +41,16 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>11</item>
-        <item>41</item>
-        <item>91</item>
-        <item>161</item>
-        <item>226</item>
-        <item>321</item>
-        <item>641</item>
-        <item>1281</item>
-        <item>2601</item>
+        <item>3</item>
+        <item>9</item>
+        <item>32</item>
+        <item>79</item>
+        <item>156</item>
+        <item>308</item>
+        <item>601</item>
+        <item>1157</item>
+        <item>2319</item>
+        <item>4763</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -57,15 +58,16 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>30</item>
-        <item>39</item>
-        <item>47</item>
-        <item>73</item>
-        <item>108</item>
-        <item>142</item>
-        <item>170</item>
-        <item>199</item>
-        <item>227</item>
+        <item>50</item>
+        <item>72</item>
+        <item>85</item>
+        <item>106</item>
+        <item>121</item>
+        <item>129</item>
+        <item>161</item>
+        <item>174</item>
+        <item>204</item>
+        <item>215</item>
         <item>255</item>
     </integer-array>
 
@@ -74,29 +76,11 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
-    </integer-array>
-
-    <!-- Array of output values for keyboard backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         The brightness values must be between 0 and 255 and be non-decreasing.
-         This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -106,6 +90,10 @@
 
     <!-- Minimum screen brightness allowed by the power manager. -->
     <integer name="config_screenBrightnessDim">1</integer>
+
+    <!-- Default screen brightness setting.
+         Must be in the range specified by minimum and maximum. -->
+    <integer name="config_screenBrightnessSettingDefault">82</integer>
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
@@ -131,14 +119,11 @@
          Used to decide if the user can change the colors -->
     <bool name="config_multiColorNotificationLed">true</bool>
 
-    <!-- Default color for notification LED is green. -->
-    <color name="config_defaultNotificationColor">#ff00ff00</color>
+    <!-- Default color for notification LED is white. -->
+    <color name="config_defaultNotificationColor">#ffffffff</color>
 
     <!-- Default LED on time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOn">1000</integer>
-
-    <!-- Default LED off time for notification LED in milliseconds. -->
-    <integer name="config_defaultNotificationLedOff">9000</integer>
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveBatteryLed">true</bool>
@@ -147,7 +132,7 @@
     <bool name="config_multiColorBatteryLed">true</bool>
 
     <!-- reference volume index for music stream to limit headphone volume and display warning -->
-    <integer name="config_safe_media_volume_index">8</integer>
+    <integer name="config_safe_media_volume_index">6</integer>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
@@ -155,24 +140,6 @@
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb\\d"</item>
         <item>"rndis\\d"</item>
-        <item>ncm\\d</item>
-    </string-array>
-
-    <!-- Defines the shutdown options shown in the reboot dialog. -->
-        <array name="shutdown_reboot_options" translatable="false">
-        <item>@string/reboot_reboot</item>
-        <item>@string/reboot_soft</item>
-        <item>@string/reboot_recovery</item>
-        <item>@string/reboot_download</item>
-    </array>
-
-    <!-- Do not translate. Defines the shutdown actions passed to the kernel.
-         The first item should be empty for regular reboot. -->
-        <string-array name="shutdown_reboot_actions" translatable="false">
-        <item></item>
-        <item>soft_reboot</item>
-        <item>recovery</item>
-        <item>download</item>
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
@@ -196,7 +163,6 @@
     <integer-array translatable="false" name="config_tether_upstream_types">
         <item>0</item>
         <item>1</item>
-        <item>4</item>
         <item>5</item>
         <item>7</item>
     </integer-array>
@@ -211,25 +177,17 @@
          does not require auto-restore. -->
     <!-- the 6th element indicates boot-time dependency-met value. -->
     <string-array translatable="false" name="networkAttributes">
-        <item>wifi,1,1,1,-1,true</item>
-        <item>mobile,0,0,0,-1,true</item>
-        <item>mobile_mms,2,0,2,60000,true</item>
-        <item>mobile_supl,3,0,2,60000,true</item>
-        <item>mobile_dun,4,0,2,60000,true</item>
-        <item>mobile_hipri,5,0,3,60000,true</item>
-        <item>bluetooth,7,7,1,-1,true</item>
-        <item>mobile_fota,10,0,2,60000,true</item>
-        <item>mobile_ims,11,0,2,60000,true</item>
-        <item>mobile_cbs,12,0,2,60000,true</item>
-        <item>wifi_p2p,13,1,0,-1,true</item>
-        <item>mobile_ia,14,0,2,-1,true</item>
-        <item>mobile_emergency,15,0,2,-1,true</item>
-        <item>usbnet,51,51,6,-1,true</item>
-        <item>mobile_httpproxy,52,0,2,60000,true</item>
-        <item>mobile_internet,53,0,2,60000,true</item>
-        <item>mobile_vapp,54,0,2,1800000,true</item>
-        <item>mobile_caller_name_id,55,0,2,1800000,true</item>
-        <item>mobile_v800,56,0,2,60000,true</item>
+        <item>"wifi,1,1,1,-1,true"</item>
+        <item>"mobile,0,0,0,-1,true"</item>
+        <item>"mobile_mms,2,0,2,60000,true"</item>
+        <item>"mobile_supl,3,0,2,60000,true"</item>
+        <item>"mobile_dun,4,0,2,60000,true"</item>
+        <item>"mobile_hipri,5,0,3,60000,true"</item>
+        <item>"mobile_fota,10,0,2,60000,true"</item>
+        <item>"mobile_ims,11,0,2,60000,true"</item>
+        <item>"mobile_cbs,12,0,2,60000,true"</item>
+        <item>"mobile_ia,14,0,2,-1,true"</item>
+        <item>"bluetooth,7,7,2,-1,true"</item>
     </string-array>
 
     <!-- This string array should be overridden by the device to present a list of radio
@@ -263,12 +221,17 @@
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
-    <!-- Indicate whether to allow the device to suspend when the screen is off
-         due to the proximity sensor.  This resource should only be set to true
-         if the sensor HAL correctly handles the proximity sensor as a wake-up source.
-         Otherwise, the device may fail to wake out of suspend reliably.
+    <!-- Setting this true forces the headset jack switches to use the/dev/input/event subsystem
+         rather than the uevent framework. -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+
+    <!-- Indicate whether closing the lid causes the device to go to sleep and opening
+         it causes the device to wake up.
          The default is false. -->
-    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+    <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Make things go fast -->
+    <bool name="config_ui_enableFadingMarquee">false</bool>
 
     <!-- Wifi driver supports batched scan -->
     <bool translatable="false" name="config_wifi_batched_scan_supported">true</bool>
@@ -279,10 +242,7 @@
     <!-- MMS user agent prolfile url -->
     <string name="config_mms_user_agent_profile_url" translatable="false">http://gsm.lge.com/html/gsm/Nexus5-M3.xml</string>
 
-    <!-- Disable lockscreen translucent decor by default -->
-    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
-
-    <!-- Hardware keys present on the device, stored as a bit field.
+    <!-- Hardware 'face' keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
          of the following keys present:
              1 - Home
@@ -310,14 +270,6 @@
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">64</integer>
 
-    <!-- Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">4</integer>
-    <!-- Whether Multiuser UI should be shown -->
-    <bool name="config_enableMultiUserUI">true</bool>
-
-    <!-- Is the device capable of hot swapping an UICC Card -->
-    <bool name="config_hotswapCapable">true</bool>
-
     <!-- Performance profiles -->
     <string name="config_perf_profile_prop">sys.perf.profile</string>
     <string name="config_perf_profile_default_entry">1</string>
@@ -329,43 +281,29 @@
          movement threshold where scrolling should begin. -->
     <dimen name="config_viewConfigurationTouchSlop">4dp</dimen>
 
+    <!-- Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">4</integer>
+
+    <!-- Whether UI for multi user should be shown -->
+    <bool name="config_enableMultiUserUI">true</bool>
+
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
-    <string name="config_wifi_tcp_buffers" translatable="false">524288,1048576,2097152,262144,524288,1048576</string>
+    <string name="config_wifi_tcp_buffers" translatable="false">4096,221184,3461120,4096,221184,3461120</string>
 
     <!-- Configure mobile tcp buffer sizes in the form:
          rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
          If no value is found for the rat-name in use, the system default will be applied.
     -->
     <string-array name="config_mobile_tcp_buffers">
-        <item>lte:524288,1048576,5120000,262144,524288,1220608</item>
-        <item>hspap:4096,174760,1572864,4096,16384,1220608</item>
-        <item>hspa:4096,174760,1572864,4096,16384,1220608</item>
-        <item>hsupa:4096,174760,1572864,4096,16384,1220608</item>
-        <item>hsdpa:4096,174760,1572864,4096,16384,1220608</item>
-        <item>umts:4096,174760,1572864,4096,16384,110208</item>
-        <item>edge:4093,26280,35040,4096,16384,35040</item>
-        <item>gprs:4092,8760,11680,4096,8760,11680</item>
-        <item>evdo_b:4094,87380,262144,4096,16384,262144</item>
+        <item>edge:4093,26280,704512,4096,16384,110208</item>
+        <item>gprs:4092,8760,704512,4096,8760,110208</item>
+        <item>umts:4094,87380,704512,4096,16384,110208</item>
+        <item>hsdpa:4092,87380,704512,4096,16384,110208</item>
+        <item>hsupa:4092,87380,704512,4096,16384,110208</item>
+        <item>hspa:4092,87380,704512,4096,16384,110208</item>
+        <item>hspap:4092,87380,704512,4096,16384,110208</item>
+        <item>lte:4094,87380,2560000,4096,16384,1220608</item>
     </string-array>
-
-    <!-- Vibrator pattern for feedback about a long screen/key press -->
-    <integer-array name="config_longPressVibePattern">
-        <item>0</item>
-        <item>25</item>
-        <item>10</item>
-    </integer-array>
-
-    <!-- Vibrator pattern for feedback about touching a virtual key -->
-    <integer-array name="config_virtualKeyVibePattern">
-        <item>0</item>
-        <item>25</item>
-        <item>8</item>
-    </integer-array>
-
-    <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
-    <integer-array name="config_keyboardTapVibePattern">
-        <item>25</item>
-    </integer-array>
 
 </resources>
