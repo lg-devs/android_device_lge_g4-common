@@ -165,7 +165,6 @@ TARGET_HW_DISK_ENCRYPTION := false
 TARGET_INIT_VENDOR_LIB := libinit_msm
 
 #RIL
-BOARD_RIL_CLASS := ../../../device/lge/g4-common/ril/
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_LGE_RIL_SYMBOLS
 
 # NFC
