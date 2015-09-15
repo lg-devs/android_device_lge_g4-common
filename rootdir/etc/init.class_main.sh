@@ -35,8 +35,8 @@ datamode=`getprop persist.data.mode`
 
 case "$baseband" in
     "apq")
-    setprop ro.radio.noril no
-    start netmgrd
+    setprop ro.radio.noril yes
+    stop ril-daemon
 esac
 
 case "$baseband" in
@@ -44,7 +44,6 @@ case "$baseband" in
     start qmuxd
     start ipacm-diag
     start ipacm
-	 start netmgrd
     case "$baseband" in
         "svlte2a" | "csfb")
           start qmiproxy
