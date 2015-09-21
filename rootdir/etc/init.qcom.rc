@@ -113,26 +113,28 @@ on boot
 	write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/module/msm_thermal/core_control/enabled 1
-    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_lpm
-    chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_btwrite
-    chown system system /sys/module/sco/parameters/disable_esco
-    chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
-    chmod 0660 /sys/module/bluetooth_power/parameters/power
-    chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwake
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/preproto
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /proc/bluetooth/sleep/btwake
     chmod 0660 /proc/bluetooth/sleep/proto
-    chown bluetooth net_bt_stack /dev/ttyHS0
+    chmod 0660 /proc/bluetooth/sleep/preproto
     chown bluetooth net_bt_stack /dev/ttyHS99
+    chown bluetooth net_bt_stack /dev/ttyHS0
     chmod 0660 /sys/module/hci_uart/parameters/ath_lpm
     chmod 0660 /sys/module/hci_uart/parameters/ath_btwrite
     chmod 0660 /dev/ttyHS99
     chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
+  # Feature chip vendor : brcm
+    setprop bluetooth.chip.vendor brcm
+
+    # For BCM FM Radio
+    setprop ro.fm.module BCM
+    
     # WiFi
     chown wifi wifi /dev/rfkill
     chmod 0600 /dev/rfkill
