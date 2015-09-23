@@ -76,7 +76,6 @@ PRODUCT_PACKAGES += \
 
 # Init scripts
 PRODUCT_PACKAGES += \
-    init.qcom.sh \
     init.qcom.coex.sh \
     init.qcom.fm.sh \
     init.class_main.sh \
