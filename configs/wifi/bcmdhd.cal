@@ -1,4 +1,4 @@
-#LGE P1 TMUS 4339 RF_Module 15.03.02
+#LGE P1 for 4339 RF_Module 
 #2G/5G power default cal
 #RSSI Default Cal
 #Target power / 141001
@@ -65,58 +65,60 @@ aga0=253
 tssipos5g=0
 tssipos2g=0
 
-pa2gccka0=-116,7656,-852
-pa2ga0=-161,6285,-723
+pa2gccka0=-116,7558,-852
+pa2ga0=-161,6189,-723
 
-pa5ga0=-164,5853,-689,-164,5786,-687,-167,5735,-686,-157,5688,-662
-pa5gbw40a0=-171,5731,-670,-163,5819,-681,-159,5769,-666,-141,5735,-631
-pa5gbw80a0=-154,5680,-647,-159,5682,-651,-163,5755,-673,-175,5524,-660
+pa5ga0=-164,5955,-689,-164,5932,-687,-167,5863,-686,-157,5848,-662
+pa5gbw40a0=-171,5773,-670,-163,5895,-681,-159,5819,-666,-141,5785,-631
+pa5gbw80a0=-154,5712,-647,-159,5674,-651,-163,5755,-673,-175,5564,-660
 
 pdoffset40ma0=0
 pdoffset80ma0=0
 pdoffsetcckma0=0
 
-# Target Power for 2G was changed by LG D4 Division for LGIT MD(15. 3/2)
-# 11b: 19dBm
-# 11g: 14dBm(54M,48M)/15dBm(36M,24M,18M,12M)/16dBm(6M,9M)
-# 11n: 13dBm(MCS7)/14dBmMCS(6~3)/16dBm(MCS2~0)
+# Default Target Power for 2G -
+# 11b: 17dBm
+# 11g: 14dBm
+# 11n: 13dBm 
 
-maxp2ga0=85
+maxp2ga0=74
 
 cckbw202gpo=0x0000
 cckbw20ul2gpo=0x0000
 
-ofdmlrbw202gpo=0x0084
-dot11agofdmhrbw202gpo=0xaa88
+ofdmlrbw202gpo=0x0066
+dot11agofdmhrbw202gpo=0x6666
 
-mcsbw202gpo=0xeccaaaa6
+mcsbw202gpo=0xa8888888
 mcsbw402gpo=0xccaaaaa6
 
-# Target Power for 5G was changed by LG D4 Division for LGIT MD(15.3/2)
-# 11a : 14dBm(54M,48M) 15dBm(36M,24M) 16dBm(18,12,9,6M)
-# 11n : 13dBm (MCS7) 14dBm(MCS6,5) 15(MCS4,3) 16dBm(MCS2~0) 
-# 11nHT40 : 13dBm (MCS7) 14(MCS6~3) 15(MCS2~0) 
-# 11ac VHT20 : 13dBm (MCS8,7) 14dBm(MCS6,5) 15(MCS4,3) 16dBm(MCS2~0) 
-# 11ac VHT40 : 12(MCS9) 13dBm (MCS8,7) 14dBm(MCS6~3) 15(MCS2~0)
-# 11ac VHT80 : 12(MCS9) 13dBm (MCS8~3) 14dBm(MCS2~0)
 
-maxp5ga0=72,74,74,76
+# Default Target Power for 5G 
+# 11a : 13dBm
+# 11n : 13dBm
+# 11nHT40 : 11dBm 
+# 11ac : 13dBm
+# 11ac HT40 : 11dBm
+# 11ac HT80 : 11dBm
+
+maxp5ga0=58,58,58,58
 
 #low
-mcsbw205glpo=0x86644220
-mcsbw405glpo=0xA8866664
-mcsbw805glpo=0xCAA88886
+mcsbw205glpo=0x40000000
+mcsbw405glpo=0x44444444
+mcsbw805glpo=0x44444444
 mcsbw1605glpo=0xcca88642
 #mid
-mcsbw205gmpo=0x86644220
-mcsbw405gmpo=0xA8866664
-mcsbw805gmpo=0xCAA88886
+mcsbw205gmpo=0x40000000
+mcsbw405gmpo=0x44444444
+mcsbw805gmpo=0x44444444
 mcsbw1605gmpo=0xcca88642
 #high
-mcsbw205ghpo=0x86644220
-mcsbw405ghpo=0xA8866664
-mcsbw805ghpo=0xCAA88886
+mcsbw205ghpo=0x40000000
+mcsbw405ghpo=0x44444444
+mcsbw805ghpo=0x44444444
 mcsbw1605ghpo=0xcca88642
+
 
 mcslr5glpo=0x0000
 mcslr5gmpo=0x0000
@@ -142,30 +144,30 @@ phycal_tempdelta=25
 cckdigfilttype=2
 tssifloor2g=500
 
-ofdmfiltbesel_2g=0x9
-ofdmfiltbe_2g=6
-
 swctrlmap_5g=0x00080008,0x00140000,0x00100008,0x800301,0x01c
 swctrlmap_2g=0x00000000,0x00030001,0x00010000,0x800301,0x0ff
 swctrlmapext_5g=0x00000000,0x00000000,0x00000000,0x000000,0x000
 swctrlmapext_2g=0x00000001,0x00000000,0x00000000,0x000000,0x001
 
 ##2G RSSI compensation 20/40
-rssicorrnorm_c0=-3,-3
+rssicorrnorm_c0=-2,-2
 ##5G RSSI compenation Low(36-48):20/40/80, Mid(54-64):20/40/80, High(100-140):20/40/80, X1(149-165):20/40/80
-rssicorrnorm5g_c0=-7,-7,-7,-6,-6,-6,-4,-4,-4,-2,-2,-2
+rssicorrnorm5g_c0=-3,-3,-3,-3,-3,-3,-1,-1,-1,-2,-2,-2
 #2G channel compansation : ch12/ch3/ch2/ch1
-rpcal2g=0x4F0E
+rpcal2g=0x1edc
 #2G channel compansation : ch5/ch4/ch14/ch13
-rpcal5gb0=0xEE04
+rpcal5gb0=0x0001
 #2G channel compansation : ch9/ch8/ch7/ch6
-rpcal5gb1=0x110F
+rpcal5gb1=0xedee
 #2G channel compansation : NA/NA/ch11/ch10
-rpcal5gb2=0x0000
+rpcal5gb2=0x0012
 
 ed_thresh2g=-77
 ed_thresh5g=-77
 muxenab=0x10
+#2.4G BandEdge
+ofdmfiltbesel_2g=0x9
+ofdmfiltbe_2g=6
 
 # Set btc_params for BT coex issue 
 btc_params80=0 
