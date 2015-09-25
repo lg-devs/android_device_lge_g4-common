@@ -44,7 +44,7 @@ static struct light_state_t g_attention;
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
 
-char const*const PTN_BLINK_FILE
+char const*const EMOTIONAL_BLINK_FILE
         = "/sys/class/lg_rgb_led/use_patterns/blink_patterns";
 
 /**
@@ -133,8 +133,6 @@ static int
 set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-
-    int len;
     int onMS, offMS;
     unsigned int colorRGB;
     char blink_pattern[PAGE_SIZE];
@@ -155,7 +153,7 @@ set_speaker_light_locked(struct light_device_t* dev,
         colorRGB = state->color;
 
         sprintf(blink_pattern,"0x%x,%d,%d",colorRGB,onMS,offMS);
-        write_str(PTN_BLINK_FILE, blink_pattern);
+        write_str(EMOTIONAL_BLINK_FILE, blink_pattern);
     }
 
     return 0;
