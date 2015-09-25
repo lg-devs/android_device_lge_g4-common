@@ -152,7 +152,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 
         colorRGB = state->color;
 
-        sprintf(blink_pattern,"0x%x,%d,%d",colorRGB,onMS,offMS);
+        sprintf(blink_pattern,"0x%06x,%d,%d",colorRGB,onMS,offMS);
         write_str(EMOTIONAL_BLINK_FILE, blink_pattern);
     }
 
