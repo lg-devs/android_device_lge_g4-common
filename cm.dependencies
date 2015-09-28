@@ -1,7 +1,7 @@
 [
   {
-    "repository": "android_kernel_lge_g4",
-    "target_path": "kernel/lge/g4"
+    "repository": "android_kernel_lge_msm8992",
+    "target_path": "kernel/lge/msm8992"
   },
   {
     "repository": "android_device_qcom_common",
