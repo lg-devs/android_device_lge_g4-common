@@ -295,14 +295,14 @@ on boot
 
     # NFC ++
     # permissions for NFC
-    chmod 0600 /dev/pn544
-    chown nfc nfc /dev/pn544
+    chmod 0600 /dev/pn547
+    chown nfc nfc /dev/pn547
     setprop debug.nfc.fw_download "true"
     setprop debug.nfc.fw_boot_download "false"
     # NFC --
 
-    # HAL looks for pn54x but kernel driver uses pn544
-    symlink /dev/pn544 /dev/pn54x
+    # HAL looks for pn54x but kernel driver uses pn547
+    symlink /dev/pn547 /dev/pn54x
 
     # exfat
     insmod /system/lib/modules/texfat.ko
