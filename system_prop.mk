@@ -17,14 +17,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #Audio   
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=true \
-    audio.offload.multiple.enabled=false \
-    audio.offload.pcm.16bit.enable=false \
-    audio.offload.pcm.24bit.enable=true \
-    audio.offload.pcm.enable=true \
-    av.offload.enable=false \
-    av.streaming.offload.enable=false \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=true \
@@ -39,7 +31,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.smoothstreaming=true \
     media.aac_51_output_enabled=true \
     qcom.hw.aac.encoder=true
-    
 
 # Display
 #
