@@ -397,6 +397,11 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
+    <path name="deep-buffer-playback speaker">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
+        <path name="deep-buffer-playback" />
+    </path>
+
     <path name="deep-buffer-playback speaker-protected">
         <path name="deep-buffer-playback" />
     </path>
@@ -446,6 +451,11 @@
 
     <path name="low-latency-playback">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback speaker">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia5" value="1" />
+        <path name="low-latency-playback" />
     </path>
 
     <path name="low-latency-playback speaker-protected">
@@ -1377,8 +1387,6 @@
 
     <path name="speaker">
         <ctl name="Speaker Driver Playback Volume" value="9" />
-        <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
-        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia5" value="1" />
     </path>
 
     <path name="speaker-liquid">
@@ -1537,11 +1545,6 @@
         <path name="speaker" />
         <ctl name="Speaker Driver Playback Volume" value="9" />
     </path>
-    <!-- QUAT MI2S SPEAKER
-	<path name="voice-quat-mi2s-speaker">
-	    <path name="quat-mi2s-speaker" />
-	</path>
-    -->
 
     <path name="voice-speaker-mic">
         <path name="speaker-mic" />
