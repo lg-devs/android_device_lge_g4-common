@@ -41,6 +41,14 @@
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="voice-speaker" />
         
         <!-- Input devices -->
+        <device name="SND_DEVICE_IN_HANDSET_MIC" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" backend="handset-mic-vr" />
     </backend_names>
 
     <bit_width_configs>
@@ -58,6 +66,11 @@
         <!-- Output devices -->
 
         <!-- Input devices -->
+        <device name="SND_DEVICE_IN_HANDSET_MIC" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" alias="voice-speaker-dmic-ef" />
     </device_names>
 
 </audio_platform_info>
