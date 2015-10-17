@@ -71,6 +71,10 @@
         <device name="SND_DEVICE_IN_HANDSET_MIC_NS" alias="voice-dmic-ef" />
         <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" alias="voice-dmic-ef" />
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" alias="voice-speaker-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" alias="voice-dmic-ef" />
     </device_names>
 
 </audio_platform_info>
