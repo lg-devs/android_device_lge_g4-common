@@ -23,7 +23,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence \
     ro.qc.sdk.audio.ssr=false \
     tunnel.audio.encode=false \
-    use.voice.path.for.pcm.voip=false
+    use.voice.path.for.pcm.voip=false \
+    av.offload.enable=false
     
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -32,7 +33,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
     qcom.hw.aac.encoder=true
     
-    # Bluetooth
+# Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.chip.vendor=brcm 
 
