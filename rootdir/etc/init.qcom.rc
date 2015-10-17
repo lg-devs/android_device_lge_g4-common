@@ -260,6 +260,7 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
+
     # Flashlight
     chown system system /sys/class/leds/flashlight/brightness
     chown system system /sys/class/leds/flashlight_front/brightness
@@ -328,8 +329,9 @@ on boot
 # START touch_knock_on
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
 	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
-	chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chown system radio /sys/devices/virtual/input/lge_touch/lpwg_notify
 	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_notify
+	write /sys/devices/virtual/input/lge_touch/lpwg_notify "1 1 0 0"
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_test_info
 	chmod 644 /sys/devices/virtual/input/lge_touch/lpwg_test_info
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_test_ctrl
@@ -356,6 +358,7 @@ on boot
 # Begin SRE Display New Feature
     chown system system /sys/class/sre/sre_func/sre_status
     chmod 644 /sys/class/sre/sre_func/sre_status
+
 # End SRE Display New Feature
 
 # Power_BSP, if need, control max_frequencies for peak current issue
@@ -370,7 +373,8 @@ on boot
    chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/onoff_patterns
    chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/setting
    chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/setting
-   write /sys/devices/virtual/lg_rgb_led/use_patterns/setting 1
+   write /sys/devices/virtual/lg_rgb_led/use_patterns/setting 0
+   
 # For QC2.0
    chown root system /sys/module/charger_controller/parameters/quick_charging_state
    chmod 0664 /sys/module/charger_controller/parameters/quick_charging_state
