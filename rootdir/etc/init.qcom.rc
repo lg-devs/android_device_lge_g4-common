@@ -260,6 +260,7 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
+
     # Flashlight
     chown system system /sys/class/leds/flashlight/brightness
     chown system system /sys/class/leds/flashlight_front/brightness
@@ -295,14 +296,14 @@ on boot
 
     # NFC ++
     # permissions for NFC
-    chmod 0600 /dev/pn544
-    chown nfc nfc /dev/pn544
+    chmod 0600 /dev/pn547
+    chown nfc nfc /dev/pn547
     setprop debug.nfc.fw_download "true"
     setprop debug.nfc.fw_boot_download "false"
     # NFC --
 
-    # HAL looks for pn54x but kernel driver uses pn544
-    symlink /dev/pn544 /dev/pn54x
+    # HAL looks for pn54x but kernel driver uses pn547
+    symlink /dev/pn547 /dev/pn54x
 
     # exfat
     insmod /system/lib/modules/texfat.ko
@@ -328,8 +329,9 @@ on boot
 # START touch_knock_on
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
 	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
-	chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chown system radio /sys/devices/virtual/input/lge_touch/lpwg_notify
 	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_notify
+	write /sys/devices/virtual/input/lge_touch/lpwg_notify "1 1 0 0"
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_test_info
 	chmod 644 /sys/devices/virtual/input/lge_touch/lpwg_test_info
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_test_ctrl
@@ -356,6 +358,7 @@ on boot
 # Begin SRE Display New Feature
     chown system system /sys/class/sre/sre_func/sre_status
     chmod 644 /sys/class/sre/sre_func/sre_status
+
 # End SRE Display New Feature
 
 # Power_BSP, if need, control max_frequencies for peak current issue
@@ -370,7 +373,8 @@ on boot
    chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/onoff_patterns
    chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/setting
    chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/setting
-   write /sys/devices/virtual/lg_rgb_led/use_patterns/setting 1
+   write /sys/devices/virtual/lg_rgb_led/use_patterns/setting 0
+   
 # For QC2.0
    chown root system /sys/module/charger_controller/parameters/quick_charging_state
    chmod 0664 /sys/module/charger_controller/parameters/quick_charging_state
@@ -535,6 +539,13 @@ on post-fs-data
     chmod 2755 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
+
+    # Create directory used by sensor subsystem
+    mkdir /persist/sensors 0775 system root
+    chmod 0664 /persist/sensors/sensors_settings
+    chown system root /persist/sensors/sensors_settings
+    mkdir /data/misc/sensors 0775 system system
+    restorecon_recursive /data/misc/sensors
 
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -857,11 +868,6 @@ on property:drmdiag.load=1
 on property:drmdiag.load=0
     stop drmdiag
 
-service qcom-sh /system/bin/sh /init.qcom.sh
-    class late_start
-    user root
-    oneshot
-
 service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     class late_start
     user root
@@ -1010,13 +1016,11 @@ on property:persist.sys.qlogd=0
 service vm_bms /system/bin/vm_bms
     user root
     group root
-    disabled
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
    class core
     user root
     group root
-    disabled
 
 # init.qcom.usb.sh configure RNDIS to go through HW IPA
 service qcom-usb-sh /system/bin/sh /init.qcom.usb.sh

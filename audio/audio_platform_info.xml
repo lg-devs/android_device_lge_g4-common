@@ -25,14 +25,57 @@
 <!-- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN -->
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
 <audio_platform_info>
+
     <acdb_ids>
+        <!-- Output devices -->
+        <device name="SND_DEVICE_OUT_HEADPHONES" acdb_id="10" />
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" acdb_id="101"/>
+        
+        <!-- Input devices -->
+        <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="8" />
     </acdb_ids>
+
+    <backend_names>
+        <!-- Output devices -->
+        <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" />
+        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="voice-speaker" />
+        
+        <!-- Input devices -->
+        <device name="SND_DEVICE_IN_HANDSET_MIC" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" backend="handset-mic-vr" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" backend="handset-mic-vr" />
+    </backend_names>
+
     <bit_width_configs>
+        <!-- Output devices -->
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
+        
+        <!-- Input devices -->
     </bit_width_configs>
+
     <pcm_ids>
         <usecase name="USECASE_AUDIO_3RDP_SPKR_PROT_TX" type="in" id="81"/>
     </pcm_ids>
+
+    <device_names>
+        <!-- Output devices -->
+
+        <!-- Input devices -->
+        <device name="SND_DEVICE_IN_HANDSET_MIC" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" alias="voice-speaker-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" alias="voice-dmic-ef" />
+    </device_names>
+
 </audio_platform_info>
 

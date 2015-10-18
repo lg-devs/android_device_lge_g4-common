@@ -734,6 +734,19 @@ case "$target" in
 esac
 
 case "$target" in
+     "msm8992")
+       echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+       echo "interactive" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+       echo "interactive" > /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+       echo "interactive" > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+       echo "interactive" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+       echo "interactive" > /sys/devices/system/cpu/cpu5/cpufreq/scaling_governor
+       ;;
+       esac
+               
+   
+
+case "$target" in
     "msm8994")
         # ensure at most one A57 is online when thermal hotplug is disabled
         echo 0 > /sys/devices/system/cpu/cpu5/online
