@@ -306,4 +306,7 @@
         <item>lte:4094,87380,2560000,4096,16384,1220608</item>
     </string-array>
 
+    <!-- Whether device supports double tap to wake -->
+    <bool name="config_supportDoubleTapWake">true</bool>
+
 </resources>
