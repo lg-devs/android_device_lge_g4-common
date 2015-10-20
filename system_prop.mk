@@ -24,6 +24,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.ssr=false \
     tunnel.audio.encode=false \
     use.voice.path.for.pcm.voip=false \
+    use.dedicated.device.for.voip=true \
     av.offload.enable=false
     
 # Media

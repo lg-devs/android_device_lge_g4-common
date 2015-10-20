@@ -28,11 +28,13 @@
 
     <acdb_ids>
         <!-- Output devices -->
-        <device name="SND_DEVICE_OUT_HEADPHONES" acdb_id="10" />
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" acdb_id="101"/>
         
         <!-- Input devices -->
-        <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="8" />
+        <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="4" /> <!-- handset mic for voice-call -->      
+        <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="1063" /> <!-- handset mic for audio-record -->
+        <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="1066" />
+        <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" acdb_id="1066" />        
     </acdb_ids>
 
     <backend_names>
@@ -41,20 +43,11 @@
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="voice-speaker" />
         
         <!-- Input devices -->
-        <device name="SND_DEVICE_IN_HANDSET_MIC" backend="handset-mic-vr" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" backend="handset-mic-vr" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" backend="handset-mic-vr" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" backend="handset-mic-vr" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC" backend="handset-mic-vr" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" backend="handset-mic-vr" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" backend="handset-mic-vr" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" backend="handset-mic-vr" />
     </backend_names>
 
     <bit_width_configs>
         <!-- Output devices -->
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
-        
         <!-- Input devices -->
     </bit_width_configs>
 
@@ -64,17 +57,18 @@
 
     <device_names>
         <!-- Output devices -->
+        <device name="SND_DEVICE_OUT_VOIP_HANDSET" alias="voip-earpiece" />
+        <device name="SND_DEVICE_OUT_VOIP_SPEAKER" alias="voip-speaker" />
+        <device name="SND_DEVICE_OUT_VOIP_HEADPHONES" alias="voip-headphones" />
 
         <!-- Input devices -->
-        <device name="SND_DEVICE_IN_HANDSET_MIC" alias="voice-dmic-ef" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" alias="voice-dmic-ef" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" alias="voice-dmic-ef" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" alias="voice-dmic-ef" />
-        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" alias="voice-speaker-dmic-ef" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC" alias="voice-dmic-ef" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" alias="voice-dmic-ef" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" alias="voice-dmic-ef" />
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" alias="voice-dmic-ef" />
+        <device name="SND_DEVICE_IN_VOICE_DMIC" alias="handset-mic" /> <!-- handset mic for voice-call -->
+        <device name="SND_DEVICE_IN_HANDSET_MIC" alias="voice-memo" /> <!-- handset mic for audio-record -->
+        <device name="SND_DEVICE_IN_HEADSET_MIC" alias="headset-voice-memo" />
+        <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" alias="headset-voice-memo" />
+        <device name="SND_DEVICE_IN_VOIP_HANDSET_MIC" alias="voip-handset-mic" />
+        <device name="SND_DEVICE_IN_VOIP_HANDSET_MIC" alias="voip-speaker-mic" />
+        <device name="SND_DEVICE_IN_VOIP_HEADSET_MIC" alias="voip-headset-mic" />
     </device_names>
 
 </audio_platform_info>

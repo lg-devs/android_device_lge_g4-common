@@ -69,6 +69,6 @@ acdb_rx = 1118, acdb_tx = 1131
 VOIP headset
 15: audio-record
 OUT: 73: voip-headphones
-IN: 177: voip-headset-mic)
+IN: 177: voip-headset-mic
 acdb_rx = 1120, acdb_tx = 1122
 48000
