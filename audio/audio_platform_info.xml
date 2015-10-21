@@ -69,7 +69,7 @@
         <device name="SND_DEVICE_IN_HEADSET_MIC" alias="headset-voice-memo" />
         <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" alias="headset-voice-memo" />
         <device name="SND_DEVICE_IN_VOIP_HANDSET_MIC" alias="voip-handset-mic" />
-        <device name="SND_DEVICE_IN_VOIP_HANDSET_MIC" alias="voip-speaker-mic" />
+        <device name="SND_DEVICE_IN_VOIP_SPEAKER_MIC" alias="voip-speaker-mic" />
         <device name="SND_DEVICE_IN_VOIP_HEADSET_MIC" alias="voip-headset-mic" />
     </device_names>
 
