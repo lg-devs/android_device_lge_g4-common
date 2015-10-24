@@ -353,6 +353,10 @@ on boot
 # Begin LG Volume vibrator
     chown system system /sys/class/timed_output/vibrator/amp
     chmod 664 /sys/class/timed_output/vibrator/amp
+
+    chown system system /sys/class/timed_output/vibrator/play_mode
+    chmod 644 /sys/class/timed_output/vibrator/play_mode
+    write /sys/class/timed_output/vibrator/play_mode "buffer"
 # End LG Volume vibrator
 
 # Begin SRE Display New Feature
