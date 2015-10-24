@@ -117,7 +117,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/g4-common/bluetooth
 USE_DEVICE_SPECIFIC_CAMERA := true
 COMMON_GLOBAL_CFLAGS += -DLG_CAMERA_HARDWARE
 
-
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_USES_ION := true
@@ -175,7 +174,6 @@ BOARD_NFC_DEVICE := "/dev/pn547"
 
 # CMHW
 BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
-TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/lpwg_notify"
 
 # inherit from the proprietary version
 -include vendor/lge/g4-common/BoardConfigVendor.mk
