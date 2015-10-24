@@ -20,28 +20,28 @@ import org.cyanogenmod.hardware.util.FileUtils;
 
 public class VibratorHW {
 
-    private static String NFORCE_PATH = "/sys/devices/platform/tspdrv/nforce_timed";
+    private static String AMP_PATH = "/sys/devices/virtual/timed_output/vibrator/amp";
 
     public static boolean isSupported() {
         return true;
     }
 
     public static int getMaxIntensity()  {
-        return 127;
+        return 2204;
     }
     public static int getMinIntensity()  {
-        return 1;
+        return 116;
     }
     public static int getWarningThreshold()  {
-        return 90;
+        return 2204;
     }
     public static int getCurIntensity()  {
-        return Integer.parseInt(FileUtils.readOneLine(NFORCE_PATH));
+        return Integer.parseInt(FileUtils.readOneLine(AMP_PATH));
     }
     public static int getDefaultIntensity()  {
-        return 65;
+        return 2204;
     }
     public static boolean setIntensity(int intensity)  {
-        return FileUtils.writeLine(NFORCE_PATH, String.valueOf(intensity));
+        return FileUtils.writeLine(AMP_PATH, String.valueOf(intensity));
     }
 }
