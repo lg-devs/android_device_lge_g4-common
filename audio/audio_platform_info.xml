@@ -73,11 +73,11 @@
         <device name="SND_DEVICE_OUT_VOIP_HEADPHONES" alias="voip-headphones" />
 
         <!-- Input devices -->
-        <device name="SND_DEVICE_IN_VOICE_DMIC" alias="handset-mic" /> <!-- handset mic for voice-call earpiece -->
-        <device name="SND_DEVICE_IN_HANDSET_DMIC" alias="handset-mic" /> <!-- handset mic for voice-call earpiece -->
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" alias="handset-mic" /> <!-- handset mic for voice-call earpiece -->
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" alias="handset-mic" /> <!-- handset mic for voice-call earpiece -->
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" alias="handset-mic" /> <!-- handset mic for voice-call earpiece -->
+        <device name="SND_DEVICE_IN_VOICE_DMIC" alias="voice-dmic-ef" /> <!-- handset mic for voice-call earpiece -->
+        <device name="SND_DEVICE_IN_HANDSET_DMIC" alias="voice-dmic-ef" /> <!-- handset mic for voice-call earpiece -->
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" alias="voice-dmic-ef" /> <!-- handset mic for voice-call earpiece -->
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" alias="voice-dmic-ef" /> <!-- handset mic for voice-call earpiece -->
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" alias="voice-dmic-ef" /> <!-- handset mic for voice-call earpiece -->
 
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="voice-speaker-mic" /> <!-- handset mic for voice-call speaker -->
         <device name="SND_DEVICE_IN_SPEAKER_DMIC" alias="voice-speaker-mic" /> <!-- handset mic for voice-call speaker -->

@@ -1416,11 +1416,11 @@
     </path>
 
    <path name="sidetone-iir">
-        <ctl name="IIR1 Enable Band1" value="1" />
+        <!-- <ctl name="IIR1 Enable Band1" value="1" />
         <ctl name="IIR1 Enable Band2" value="1" />
         <ctl name="IIR1 Enable Band3" value="1" />
         <ctl name="IIR1 Enable Band4" value="1" />
-        <ctl name="IIR1 Enable Band5" value="1" />
+        <ctl name="IIR1 Enable Band5" value="1" /> -->
     </path>
 
     <path name="sidetone-headphones">
@@ -1432,7 +1432,7 @@
 
     <path name="sidetone-handset">
         <path name="sidetone-iir" />
-        <ctl name="RX1 MIX2 INP1" value="IIR1" />
+        <!-- <ctl name="RX1 MIX2 INP1" value="IIR1" /> CM: causes back coupling -->
         <ctl name="IIR1 INP1 Volume" value="84" />
     </path>
 
@@ -1485,7 +1485,6 @@
         <ctl name="RX1 Digital Volume" value="84" />
     </path>
 
-    <!-- CM: voice-call handset mic -->
     <path name="handset-mic">
         <path name="adc3" />
         <ctl name="ADC3 Volume" value="12" />
@@ -1661,11 +1660,7 @@
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="IIR1 Enable Band1" value="1" />
-        <ctl name="IIR1 Enable Band2" value="1" />
-        <ctl name="IIR1 Enable Band3" value="1" />
-        <ctl name="IIR1 Enable Band4" value="1" />
-        <ctl name="IIR1 Enable Band5" value="1" />
+        <path name="sidetone-iir" />
         <ctl name="IIR1 INP1 Volume" value="54" />
         <ctl name="RX1 MIX2 INP1" value="IIR1" />
         <ctl name="RX2 MIX2 INP1" value="IIR1" />
@@ -1692,11 +1687,7 @@
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="IIR1 Enable Band1" value="1" />
-        <ctl name="IIR1 Enable Band2" value="1" />
-        <ctl name="IIR1 Enable Band3" value="1" />
-        <ctl name="IIR1 Enable Band4" value="1" />
-        <ctl name="IIR1 Enable Band5" value="1" />
+        <path name="sidetone-iir" />
         <ctl name="IIR1 INP1 Volume" value="54" />
         <ctl name="RX1 MIX2 INP1" value="IIR1" />
         <ctl name="RX2 MIX2 INP1" value="IIR1" />
@@ -1833,7 +1824,7 @@
         <ctl name="DEC3 Volume" value="84" />
     </path>
 
-    <!-- CM: voicecall IN speaker mic -->
+    <!-- CM: voice-call IN speaker mic -->
     <path name="voice-speaker-dmic-ef">
         <path name="speaker-dmic-endfire" />
         <ctl name="ADC3 Volume" value="11" />
