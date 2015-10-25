@@ -415,6 +415,12 @@
 
     <path name="echo-reference">
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_RX" />
+        <ctl name="AUDIO_REF_EC_UL2 MUX" value="SLIM_RX" />
+        <ctl name="AUDIO_REF_EC_UL4 MUX" value="SLIM_RX" />
+        <ctl name="AUDIO_REF_EC_UL5 MUX" value="SLIM_RX" />
+        <ctl name="AUDIO_REF_EC_UL6 MUX" value="SLIM_RX" />
+        <ctl name="AUDIO_REF_EC_UL8 MUX" value="SLIM_RX" />
+        <ctl name="AUDIO_REF_EC_UL9 MUX" value="SLIM_RX" />
     </path>
 
     <path name="quat-mi2s-internal-echo-reference">
@@ -1490,10 +1496,12 @@
         <ctl name="RX1 Digital Volume" value="84" />
     </path>
 
+    <!-- CM: audio-record IN handset mic -->
     <path name="handset-mic">
-        <path name="adc3" />
-        <ctl name="ADC3 Volume" value="12" />
-        <ctl name="DEC4 Volume" value="84" />
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="SLIM TX7 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
     </path>
 
     <path name="handset-mic-cdp">
@@ -1806,10 +1814,12 @@
         <ctl name="IIR1 INP1 MUX" value="DEC7" />
     </path>
 
+    <!-- CM: audio-record IN handset stereo mic -->
     <path name="handset-stereo-dmic-ef">
         <path name="handset-dmic-endfire" />
     </path>
 
+    <!-- CM: audio-record IN speaker stereo mic -->
     <path name="speaker-stereo-dmic-ef">
         <path name="speaker-dmic-endfire" />
     </path>
@@ -2714,7 +2724,6 @@
         <ctl name="DEC4 Volume" value="84" />
     </path>
 
-    <!-- CM: audio-record IN handset mic -->
     <path name="voice-memo">
         <path name="handset-mic" />
         <ctl name="ADC3 Volume" value="10" />
@@ -2727,7 +2736,6 @@
         <ctl name="DEC5 Volume" value="84" />
     </path>
 
-    <!-- CM: audio-record IN headset mic -->
     <path name="headset-voice-memo">
         <path name="adc2" />
         <ctl name="ADC2 Volume" value="7" />
