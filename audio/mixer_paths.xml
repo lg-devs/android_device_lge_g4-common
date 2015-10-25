@@ -1814,11 +1814,12 @@
         <path name="speaker-dmic-endfire" />
     </path>
 
+    <!-- CM: voice-call IN handset mic (h811) --> 
     <path name="voice-dmic-ef-tmus">
         <path name="dmic-endfire" />
     </path>
 
-    <!-- CM: voice-call IN handset mic --> 
+    <!-- CM: voice-call IN handset mic (h815) --> 
     <path name="voice-dmic-ef">
         <path name="dmic-endfire" />
         <ctl name="ADC3 Volume" value="12" />
