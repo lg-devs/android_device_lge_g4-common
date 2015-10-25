@@ -2819,13 +2819,6 @@
         <ctl name="DEC3 Volume" value="85" />
     </path>
 
-    <!-- CM: voip IN speaker mic -->
-    <path name="voip-speaker-mic">
-        <path name="speaker-mic" />
-        <ctl name="ADC4 Volume" value="12" />
-        <ctl name="DEC3 Volume" value="84" />
-    </path>
-
     <!-- depending on dual mic -->
     <path name="voip-speaker-dmic-ef">
         <path name="speaker-dmic-endfire" />
@@ -2851,13 +2844,6 @@
         <ctl name="DEC3 Volume" value="84" />
     </path>
 
-    <!-- CM: voip IN handset mic -->
-    <path name="voip-handset-mic">
-        <path name="handset-mic" />
-        <ctl name="ADC3 Volume" value="12" />
-        <ctl name="DEC4 Volume" value="84" />
-    </path>
-
 	<!-- depending on dual mic -->
     <path name="voip-dmic-ef">
         <path name="dmic-endfire" />
@@ -2867,8 +2853,22 @@
         <ctl name="DEC4 Volume" value="84" />
     </path>
 
+    <!-- CM: voip IN handset mic -->
+    <path name="voip-main-mic-comm">
+        <path name="handset-mic" />
+        <ctl name="ADC3 Volume" value="12" />
+        <ctl name="DEC4 Volume" value="84" />
+    </path>
+
+    <!-- CM: voip IN speaker mic -->
+    <path name="voip-sub-mic-comm">
+        <path name="speaker-mic" />
+        <ctl name="ADC4 Volume" value="12" />
+        <ctl name="DEC3 Volume" value="84" />
+    </path>
+
     <!-- CM: voip IN headset mic -->
-    <path name="voip-headset-mic">
+    <path name="voip-headset-mic-comm">
         <path name="headset-mic" />
         <ctl name="ADC2 Volume" value="16" />
         <ctl name="DEC5 Volume" value="84" />
