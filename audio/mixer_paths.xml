@@ -403,7 +403,7 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
-    <!-- CM: deep-buffer-playback handset speaker -->
+    <!-- CM: deep-buffer-playback OUT handset speaker -->
     <path name="deep-buffer-playback speaker">
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
         <path name="deep-buffer-playback" />
@@ -460,10 +460,15 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
     </path>
 
-    <!-- CM: low-latency-playback handset speaker -->
+    <!-- CM: low-latency-playback OUT handset speaker -->
     <path name="low-latency-playback speaker">
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia5" value="1" />
         <path name="low-latency-playback" />
+    </path>
+
+    <!-- CM: voice-call OUT handset speaker -->
+    <path name="low-latency-playback voice-speaker">
+        <!-- empty -->
     </path>
 
     <path name="low-latency-playback speaker-protected">
@@ -1393,7 +1398,7 @@
         <ctl name="IIR1 INP1 MUX" value="DEC6" />
     </path>
 
-    <!-- CM: playback handset speaker -->
+    <!-- CM: playback OUT handset speaker -->
     <path name="speaker">
         <ctl name="Speaker Driver Playback Volume" value="9" />
     </path>
@@ -2202,6 +2207,13 @@
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia16" value="1" />
     </path>
 
+    <!-- CM: voice-call OUT handset speaker -->
+    <path name="voice-call voice-speaker">
+        <ctl name="OPALUM_AFE" value="VOICE_TUNING" />
+        <ctl name="QUAT_MI2S_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
+    </path>
+
     <path name="voice-call quat-mi2s-speaker">
         <ctl name="OPALUM_AFE" value="VOICE_TUNING" />
         <ctl name="QUAT_MI2S_RX_Voice Mixer CSVoice" value="1" />
@@ -2541,20 +2553,20 @@
     <path name="loopback-bt">
     </path>
 
-    <!-- CM: voip handset earpiece -->
+    <!-- CM: voip OUT handset earpiece -->
     <path name="voip-earpiece">
         <path name="handset" />
         <ctl name="RX1 Digital Volume" value="84" />
         <ctl name="EAR PA Gain" value="POS_6_DB" />
     </path>
 
-    <!-- CM: voip handset speaker -->
+    <!-- CM: voip OUT handset speaker -->
      <path name="voip-speaker">
         <path name="speaker" />
         <ctl name="Speaker Driver Playback Volume" value="9" />
     </path>
 
-    <!-- CM: voip headphones -->
+    <!-- CM: voip OUT headphones -->
     <path name="voip-headphones">
         <path name="headphones" />
         <ctl name="COMP1 Switch" value="0" />
@@ -2701,7 +2713,7 @@
         <ctl name="DEC4 Volume" value="84" />
     </path>
 
-    <!-- CM: audio-record handset mic -->
+    <!-- CM: audio-record IN handset mic -->
     <path name="voice-memo">
         <path name="handset-mic" />
         <ctl name="ADC3 Volume" value="10" />
@@ -2714,7 +2726,7 @@
         <ctl name="DEC5 Volume" value="84" />
     </path>
 
-    <!-- CM: audio-record headset mic -->
+    <!-- CM: audio-record IN headset mic -->
     <path name="headset-voice-memo">
         <path name="adc2" />
         <ctl name="ADC2 Volume" value="7" />
@@ -2806,7 +2818,7 @@
         <ctl name="DEC3 Volume" value="85" />
     </path>
 
-    <!-- CM: voip speaker mic -->
+    <!-- CM: voip IN speaker mic -->
     <path name="voip-speaker-mic">
         <path name="speaker-mic" />
         <ctl name="ADC4 Volume" value="12" />
@@ -2838,7 +2850,7 @@
         <ctl name="DEC3 Volume" value="84" />
     </path>
 
-    <!-- CM: voip handset mic -->
+    <!-- CM: voip IN handset mic -->
     <path name="voip-handset-mic">
         <path name="handset-mic" />
         <ctl name="ADC3 Volume" value="12" />
@@ -2854,7 +2866,7 @@
         <ctl name="DEC4 Volume" value="84" />
     </path>
 
-    <!-- CM: voip headset mic -->
+    <!-- CM: voip IN headset mic -->
     <path name="voip-headset-mic">
         <path name="headset-mic" />
         <ctl name="ADC2 Volume" value="16" />
