@@ -1472,6 +1472,10 @@
     <!-- CM: voice-call IN handset mic (h811) --> 
     <path name="voice-dmic-ef-tmus">
         <path name="voice-call-dual-mic-handset" />
+        <ctl name="ADC3 Volume" value="12" />
+        <ctl name="DEC4 Volume" value="84" />
+        <ctl name="ADC4 Volume" value="12" />
+        <ctl name="DEC3 Volume" value="84" />
     </path>
 
     <!-- CM: voice-call IN handset mic (h815) --> 
@@ -1551,6 +1555,8 @@
     <!-- CM: voice-call OUT handset (h811) -->
     <path name="voice-handset-tmus">
         <path name="handset" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="EAR PA Gain" value="POS_6_DB" />
     </path>
 
     <!-- CM: voice-call OUT handset speaker -->
