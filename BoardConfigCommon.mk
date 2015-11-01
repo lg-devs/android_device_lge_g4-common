@@ -161,6 +161,7 @@ BOARD_SEPOLICY_UNION += \
     device.te \
     file_contexts \
     genfs_contexts \
+    init-shell.te \
     healthd.te \
     mediaserver.te \
     netmgrd.te \
