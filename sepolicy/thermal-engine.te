@@ -1,1 +1,2 @@
 allow thermal-engine lge_diag_device:chr_file { open read write ioctl };
+allow thermal-engine servicemanager:binder { call };
