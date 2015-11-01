@@ -1,0 +1,11 @@
+/dev/block/mmcblk0p(.*)					u:object_r:mmc_block_device:s0
+
+/dev/pn547                              u:object_r:nfc_device:s0
+
+/dev/rfkill                             u:object_r:rfkill_device:s0
+
+/dev/diag_lge                           u:object_r:lge_diag_device:s0
+
+/sns                                    u:object_r:sensors_data_file:s0
+/sns/cal(/.*)?                          u:object_r:sensors_data_file:s0
+

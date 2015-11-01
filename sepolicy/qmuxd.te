@@ -1,0 +1,4 @@
+allow qmuxd lge_diag_device:chr_file { open read write ioctl };
+
+allow qmuxd socket_device:dir { write add_name };
+allow qmuxd socket_device:sock_file { create setattr };

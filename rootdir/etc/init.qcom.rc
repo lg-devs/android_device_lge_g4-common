@@ -570,6 +570,7 @@ on post-fs-data
 
     # Z2G4-BSP-TS@lge.com make directory for sns.reg used by sensordaemon
     mkdir /sns/cal/ 0644 system system
+    restorecon_recursive /sns
 
     # PCC Calibration
     chown system system /sys/devices/virtual/graphics/fb0/rgb

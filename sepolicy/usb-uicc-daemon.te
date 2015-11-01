@@ -1,0 +1,2 @@
+allow usb_uicc_daemon lge_diag_device:chr_file { open read write ioctl };
+allow usb_uicc_daemon system_prop:property_service { set };

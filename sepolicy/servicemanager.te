@@ -1,0 +1,2 @@
+allow servicemanager thermal-engine:process { getattr };
+allow servicemanager thermal-engine:file { read open };
