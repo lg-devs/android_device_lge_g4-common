@@ -26,6 +26,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+# grep the modem partition for baseband version and set it
+setprop gsm.version.baseband `strings /firmware/image/modem.b13 | grep "\-M8992" | head -1`
+
 #
 # start ril-daemon only for targets on which radio is present
 #
