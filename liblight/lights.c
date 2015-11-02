@@ -47,6 +47,9 @@ char const*const LCD_FILE
 char const*const EMOTIONAL_BLINK_FILE
         = "/sys/class/lg_rgb_led/use_patterns/blink_patterns";
 
+char const*const EMOTIONAL_ONOFF_FILE
+        = "/sys/class/lg_rgb_led/use_patterns/onoff_patterns";
+
 /**
  * device methods
  */
@@ -135,7 +138,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 {
     int onMS, offMS;
     unsigned int colorRGB;
-    char blink_pattern[PAGE_SIZE];
+    char pattern[PAGE_SIZE];
 
     if (state != NULL) {
         switch (state->flashMode) {
@@ -145,16 +148,22 @@ set_speaker_light_locked(struct light_device_t* dev,
                 break;
             case LIGHT_FLASH_NONE:
             default:
-                onMS = -1;
-                offMS = -1;
+                onMS = 0;
+                offMS = 0;
                 break;
         }
 
         colorRGB = state->color & 0x00ffffff;
 
-        sprintf(blink_pattern,"0x%06x,%d,%d",colorRGB,onMS,offMS);
-        ALOGD("Using blink pattern: 0x%06x,%d,%d\n",colorRGB,onMS,offMS);
-        write_str(EMOTIONAL_BLINK_FILE, blink_pattern);
+        if (onMS == 0 && offMS == 0) {
+            sprintf(pattern,"0x%06x",colorRGB);
+            ALOGD("Using onoff pattern: 0x%06x\n",colorRGB);
+            write_str(EMOTIONAL_ONOFF_FILE, pattern);
+        } else {
+            sprintf(pattern,"0x%06x,%d,%d",colorRGB,onMS,offMS);
+            ALOGD("Using blink pattern: 0x%06x,%d,%d\n",colorRGB,onMS,offMS);
+            write_str(EMOTIONAL_BLINK_FILE, pattern);
+        }
     }
 
     return 0;
