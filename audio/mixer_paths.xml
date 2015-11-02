@@ -1715,6 +1715,8 @@
 
     <path name="voice-rec-mic">
         <path name="main-mic" />
+        <ctl name="ADC3 Volume" value="12" />
+        <ctl name="DEC4 Volume" value="84" />
     </path>
 
     <path name="camcorder-mic">
